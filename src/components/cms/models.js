@@ -12,11 +12,14 @@ const styles = {
   }
 };
 
-const API = process.env.API;
+const API = process.env.REACT_APP_API;
 
 class Models extends React.Component {
+
   componentDidMount() {
     let url = `${API}/models`;
+    console.log(API);
+
     this.props.getModels(url);
   }
 
@@ -30,6 +33,7 @@ class Models extends React.Component {
   render() {
     return (
       <ul>
+        <p>Hello World!</p>
         {this.props.models &&
           this.props.models.map((model, i) => (
             <li
@@ -47,7 +51,7 @@ class Models extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  models: state.api.models
+  models: state.records.models
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
