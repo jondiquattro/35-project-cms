@@ -10,8 +10,8 @@
 
 * [repo](https://github.com/michaelageorge/35-project-cms)
 * [travis](https://travis-ci.com/michaelageorge/35-project-cms)
-* [back-end](https://javascript-401-api.herokuapp.com)
-* [front-end](http://xyz.com)
+* [back-end(Heroku)](https://javascript-401-api.herokuapp.com)
+* [front-end(AWS)](http://xyz.com)
 
 
 ### Description
