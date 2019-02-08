@@ -13,6 +13,7 @@ export const getSchema = (model, url) => dispatch => {
   });
 };
 
+
 const runGetSchema = payload => {
   return {
     type: "SCHEMA",
@@ -33,9 +34,11 @@ const runGetModels = payload => {
   };
 };
 
-export const getRecords = url => {
+export const getRecords = url =>dispatch => {
+  console.log(url);
   superagent.get(url).then(data => {
-    dispatch(runGetRecords(data.body.results));
+      dispatch(runGetRecords(data.body.results));
+      
   });
 };
 

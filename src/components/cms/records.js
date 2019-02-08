@@ -14,7 +14,7 @@ const styles = {
   }
 };
 
-const API = process.env.API;
+const API = process.env.REACT_APP_API;
 
 class Records extends React.Component {
   getRecord = id => {
@@ -28,23 +28,31 @@ class Records extends React.Component {
   };
 
   render() {
+
+    { console.log(this.props.records.records) }
+
     return (
+
       <When condition={this.props.model}>
         <ul>
-          {this.props.records.map((record, i) => (
+          <p>hello</p>
+          {this.props.records.records.map((record, i) => (
+
             <li key={record._id}>
+            <p>{console.log(record.name)}</p>
               <span
                 style={styles.clickable}
                 onClick={() => this.getRecord(record._id)}
               >
                 {record.name}
               </span>
+              
               <span
                 style={styles.delete}
                 onClick={() => this.deleteRecord(record._id)}
               >
                 x
-              </span>
+      </span>
             </li>
           ))}
         </ul>
@@ -55,8 +63,8 @@ class Records extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  records: state.api.records,
-  model: state.api.model
+  records: state.records,
+  model: state.model
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -69,3 +77,27 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Records);
+
+
+
+/* <When condition={this.props.model}>
+<ul>
+  {this.props.records.map((record, i) => (
+    <li key={record._id[i]}>
+      <span
+        style={styles.clickable}
+        onClick={() => this.getRecord(record._id)}
+      >
+        {record.name}
+      </span>
+      <span
+        style={styles.delete}
+        onClick={() => this.deleteRecord(record._id)}
+      >
+        x
+      </span>
+    </li>
+  ))}
+</ul>
+<button onClick={this.props.clearRecord}>+</button>
+</When> */

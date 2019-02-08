@@ -12,7 +12,7 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <CMS />
+        <CMS/>
       </BrowserRouter>
     </Provider>
   );

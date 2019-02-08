@@ -4,6 +4,7 @@ import Record from './record.js';
 import Models from './models.js';
 import Records from './records.js';
 
+
 export default class CMS extends React.Component {
   render() {
     return (
@@ -25,3 +26,4 @@ export default class CMS extends React.Component {
     );
   }
 }
+
