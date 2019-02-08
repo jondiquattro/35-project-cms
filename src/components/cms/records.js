@@ -33,31 +33,16 @@ class Records extends React.Component {
 
     return (
 
-      <When condition={this.props.model}>
         <ul>
           <p>hello</p>
-          {this.props.records.records.map((record, i) => (
 
-            <li key={record._id}>
-            <p>{console.log(record.name)}</p>
-              <span
-                style={styles.clickable}
-                onClick={() => this.getRecord(record._id)}
-              >
-                {record.name}
-              </span>
-              
-              <span
-                style={styles.delete}
-                onClick={() => this.deleteRecord(record._id)}
-              >
-                x
-      </span>
-            </li>
+          {this.props.records.records &&
+          this.props.records.records.map((record, i) => (
+            <li key={`models-${i}`}>
+            <span>{record.name}</span>
+             </li>
           ))}
-        </ul>
-        <button onClick={this.props.clearRecord}>+</button>
-      </When>
+      </ul>
     );
   }
 }
