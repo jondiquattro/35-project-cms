@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
       return { ...state, records: payload };
 
     case "CLEAR":
-    console.log('from clear',state.model);
+    
     if(state.model)return {...state, record: []}
     else return state;
 
