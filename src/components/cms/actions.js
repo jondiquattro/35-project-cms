@@ -1,9 +1,17 @@
 import superagent from "superagent";
 
-export const setModel = model => {
+
+
+
+export const setModel = (model) => dispatch => {
+  // console.log('model log',model)
+  dispatch(runSetModel({ model: model }))
+}
+
+const runSetModel = payload => {
   return {
     type: "MODEL",
-    payload: model
+    payload: payload
   };
 };
 
@@ -28,6 +36,7 @@ export const getModels = url => dispatch => {
 };
 
 const runGetModels = payload => {
+  console.log('rungetmodels', payload);
   return {
     type: "MODELS",
     payload: payload
@@ -35,7 +44,7 @@ const runGetModels = payload => {
 };
 
 export const getRecords = url =>dispatch => {
-  console.log(url);
+  // console.log(url);
   superagent.get(url).then(data => {
       dispatch(runGetRecords(data.body.results));
       
@@ -43,6 +52,7 @@ export const getRecords = url =>dispatch => {
 };
 
 const runGetRecords = payload => {
+  console.log(payload)
   return {
     type: "RECORDS",
     payload: payload
@@ -50,12 +60,17 @@ const runGetRecords = payload => {
 };
 
 export const getRecord = url => dispatch => {
+  // console.log('called from getRecord')
+  // console.log('getrecord',url)
+
   superagent.get(url).then(data => {
-    dispatch(runGetRecord(data.body));
+
+    dispatch(runGetRecord(data.body.results));
   });
 };
 
 const runGetRecord = payload => {
+  console.log(payload);
   return {
     type: "RECORD",
     payload: payload

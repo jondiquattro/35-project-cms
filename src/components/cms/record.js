@@ -21,6 +21,7 @@ class Record extends React.Component {
 
   // Runs whenever props change (pre-render)
   static getDerivedStateFromProps(props, state) {
+    // console.log('getderived ',props.model)
     if (props.model && !props.schemas[props.model]) {
       let url = `${API}/${props.model}/schema`;
       props.getSchema(props.model, url);
