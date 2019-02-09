@@ -21,9 +21,9 @@ class Record extends React.Component {
 
   // Runs whenever props change (pre-render)
   static getDerivedStateFromProps(props, state) {
-    // console.log('getderived ',props.model)
+
     if (props.model && !props.schemas[props.model]) {
-      let url = `${API}/${props.model}/schema`;
+      let url = `${API}/${props.model.model}/schema`;
       props.getSchema(props.model, url);
     }
     return {};
@@ -44,12 +44,14 @@ class Record extends React.Component {
   };
 
   render() {
+    // console.log('before form',this.props.record.record)
     return (
       <When condition={this.props.schemas[this.props.model]}>
         <Form
           schema={this.props.schemas[this.props.model] || {}}
+         
           uiSchema={uiSchema}
-          formData={this.props.record}
+          formData={this.props.record.record}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
           onError={this.handleError}
@@ -61,7 +63,7 @@ class Record extends React.Component {
 
 
 const mapStateToProps = state => ({
-  record: state.records.records,
+  record: state.records,
   schemas: state.records.schemas,
   model: state.records.model
 })

@@ -4,11 +4,12 @@ import superagent from "superagent";
 
 
 export const setModel = (model) => dispatch => {
-  // console.log('model log',model)
+  // working
   dispatch(runSetModel({ model: model }))
 }
 
 const runSetModel = payload => {
+  // working
   return {
     type: "MODEL",
     payload: payload
@@ -16,6 +17,7 @@ const runSetModel = payload => {
 };
 
 export const getSchema = (model, url) => dispatch => {
+  // console.log('getschema called',url)
   superagent.get(url).then(data => {
     dispatch(runGetSchema({ model: model, schema: data.body }));
   });
@@ -23,6 +25,7 @@ export const getSchema = (model, url) => dispatch => {
 
 
 const runGetSchema = payload => {
+  // working
   return {
     type: "SCHEMA",
     payload: payload
@@ -36,7 +39,7 @@ export const getModels = url => dispatch => {
 };
 
 const runGetModels = payload => {
-  console.log('rungetmodels', payload);
+  // working
   return {
     type: "MODELS",
     payload: payload
@@ -44,7 +47,7 @@ const runGetModels = payload => {
 };
 
 export const getRecords = url =>dispatch => {
-  // console.log(url);
+  // working
   superagent.get(url).then(data => {
       dispatch(runGetRecords(data.body.results));
       
@@ -52,7 +55,7 @@ export const getRecords = url =>dispatch => {
 };
 
 const runGetRecords = payload => {
-  console.log(payload)
+  // working
   return {
     type: "RECORDS",
     payload: payload
@@ -60,17 +63,15 @@ const runGetRecords = payload => {
 };
 
 export const getRecord = url => dispatch => {
-  // console.log('called from getRecord')
-  // console.log('getrecord',url)
+ //working
 
   superagent.get(url).then(data => {
-
-    dispatch(runGetRecord(data.body.results));
+    dispatch(runGetRecord(data.body));
   });
 };
 
 const runGetRecord = payload => {
-  console.log(payload);
+  //working receiving an object in payload
   return {
     type: "RECORD",
     payload: payload
@@ -123,6 +124,7 @@ const runDestroy = payload => {
 };
 
 export const clearRecord = () => {
+  // console.log('called from clear')
   return {
     type: "CLEAR"
   };

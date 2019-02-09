@@ -15,22 +15,28 @@ export default (state = initialState, action) => {
       return { ...state, model: payload };
 
     case "SCHEMA":
+      // console.log('from schemas',state.schemas)
+
       return {
         ...state,
-        schemas: { ...state.schemas, [payload.model]: payload.schema }
+        schemas: { [payload.model]: payload.schema }
       };
 
     case "MODELS":
       return { ...state, models: payload };
 
     case "RECORDS":
-    // console.log(payload)
       return { ...state, records: payload };
 
     case "CLEAR":
-      return state;
+    console.log('from clear',state.model);
+    if(state.model)return {...state, record: []}
+    else return state;
 
     case "RECORD":
+    console.log('RECORD payload',payload)
+    // console.log('from record reducer',payload)
+    //working setting record in store
       return { ...state, record: payload };
 
     case "POST":
