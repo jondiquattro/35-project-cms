@@ -35,16 +35,19 @@ class Record extends React.Component {
 
   handleSubmit = form => {
     if (form.formData._id) {
-      let url = `${API}/${this.props.model}/${form.formData._id}`;
+
+
+      let url = `${API}/${this.props.model.model}/${form.formData._id}`;
       this.props.put(this.props.model, url, form.formData);
+
     } else {
-      let url = `${API}/${this.props.model}`;
+      
+      let url = `${API}/${this.props.model.model}`;
       this.props.post(this.props.model, url, form.formData);
     }
   };
 
   render() {
-    // console.log('before form',this.props.record.record)
     return (
       <When condition={this.props.schemas[this.props.model]}>
         <Form
