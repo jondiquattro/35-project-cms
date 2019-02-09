@@ -28,6 +28,10 @@ class Models extends React.Component {
     this.props.clearRecord();
     this.props.setModel(model);
     this.props.getRecords(url);
+
+    this.props.getSchema(model, url+'/schema');
+
+
   };
 
   render() {
@@ -51,13 +55,16 @@ class Models extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  models: state.records.models
+  models: state.records.models,
+  schemas: state.records.schemas, //added saturday diquattro
+
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
   setModel: model => dispatch(actions.setModel(model)),
   getModels: url => dispatch(actions.getModels(url)),
   getRecords: url => dispatch(actions.getRecords(url)),
+  getSchema: (model, url) => dispatch(actions.getSchema(model, url)),//added saturday diquattro
   clearRecord: () => dispatch(actions.clearRecord())
 });
 

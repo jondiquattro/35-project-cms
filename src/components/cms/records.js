@@ -20,8 +20,6 @@ class Records extends React.Component {
 
   getRecord = id => {
     let url = `${API}/${this.props.records.model.model}/${id}`;
-    // console.log('getrecord ',url)
-
     this.props.getRecord(url);
 
   };
