@@ -17,39 +17,57 @@ const styles = {
 const API = process.env.REACT_APP_API;
 
 class Records extends React.Component {
+
   getRecord = id => {
-    let url = `${API}/${this.props.model}/${id}`;
+    let url = `${API}/${this.props.records.model.model}/${id}`;
+    // console.log('getrecord ',url)
+
     this.props.getRecord(url);
+
   };
 
   deleteRecord = id => {
-    let url = `${API}/${this.props.model}/${id}`;
-    this.props.deleteRecord(this.props.model, id, url);
+    let url = `${API}/${this.props.records.model.model}/${id}`;
+    
+    this.props.deleteRecord(this.props.records.model.model, id, url);
   };
 
   render() {
 
-    { console.log(this.props.records.records) }
 
     return (
+      <>
+      <ul>
+        <p>hello</p>
 
-        <ul>
-          <p>hello</p>
-
-          {this.props.records.records &&
+        {this.props.records.records &&
           this.props.records.records.map((record, i) => (
-            <li key={`models-${i}`}>
-            <span>{record.name}</span>
-             </li>
+            <li key={record._id}>
+
+              <span
+                style={styles.clickable}
+                onClick={() => this.getRecord(record._id)}
+              >
+                {record.name}
+              </span>
+              <span
+        style={styles.delete}
+        onClick={() => this.deleteRecord(record._id)}
+      >
+        x
+      </span>
+            </li>
           ))}
       </ul>
+      <button onClick={this.props.clearRecord}>+</button> 
+      </>
     );
   }
 }
 
 const mapStateToProps = state => ({
   records: state.records,
-  model: state.model
+  model: state.records.model
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -65,24 +83,25 @@ export default connect(
 
 
 
-/* <When condition={this.props.model}>
-<ul>
-  {this.props.records.map((record, i) => (
-    <li key={record._id[i]}>
-      <span
-        style={styles.clickable}
-        onClick={() => this.getRecord(record._id)}
-      >
-        {record.name}
-      </span>
-      <span
-        style={styles.delete}
-        onClick={() => this.deleteRecord(record._id)}
-      >
-        x
-      </span>
-    </li>
-  ))}
-</ul>
-<button onClick={this.props.clearRecord}>+</button>
-</When> */
+// <When condition={this.props.model}>
+// {
+//   <ul>
+//   {this.props.records.map((record, i) => (
+//     <li key={record._id[i]}>
+//       <span
+//         style={styles.clickable}
+//         onClick={() => this.getRecord(record._id)}
+//       >
+//         {record.name}
+//       </span>
+//       <span
+//         style={styles.delete}
+//         onClick={() => this.deleteRecord(record._id)}
+//       >
+//         x
+//       </span>
+//     </li>
+//   ))}
+// </ul>
+//   <button onClick={this.props.clearRecord}>+</button> }
+// </When>

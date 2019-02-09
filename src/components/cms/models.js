@@ -26,7 +26,7 @@ class Models extends React.Component {
   selectModel = model => {
     let url = `${API}/${model}`;
     this.props.clearRecord();
-    this.props.setModel();
+    this.props.setModel(model);
     this.props.getRecords(url);
   };
 

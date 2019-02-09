@@ -11,6 +11,7 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case "MODEL":
+    // console.log('MODEL payload', payload)
       return { ...state, model: payload };
 
     case "SCHEMA":
@@ -23,6 +24,7 @@ export default (state = initialState, action) => {
       return { ...state, models: payload };
 
     case "RECORDS":
+    // console.log(payload)
       return { ...state, records: payload };
 
     case "CLEAR":
