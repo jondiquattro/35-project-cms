@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+import './design/reset.scss';
+import './design/design.scss';
+
 import CMS from './components/cms/cms.js';
 
 import createStore from './store/';
