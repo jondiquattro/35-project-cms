@@ -36,10 +36,11 @@ class Records extends React.Component {
     return (
       <>
       <ul>
-        <p>hello</p>
+        <p>This is where the data from the API will appear!</p>
 
         {this.props.records.records &&
           this.props.records.records.map((record, i) => (
+            <>
             <li key={record._id}>
 
               <span
@@ -49,15 +50,16 @@ class Records extends React.Component {
                 {record.name}
               </span>
               <span
-        style={styles.delete}
-        onClick={() => this.deleteRecord(record._id)}
-      >
-        x
-      </span>
+                style={styles.delete}
+                onClick={() => this.deleteRecord(record._id)}
+              >
+                x
+              </span>
             </li>
+            </>
           ))}
+          <button onClick={this.props.clearRecord}>Clear Form</button>
       </ul>
-      <button onClick={this.props.clearRecord}>+</button> 
       </>
     );
   }
