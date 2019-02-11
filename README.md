@@ -11,7 +11,7 @@
 * [repo](https://github.com/michaelageorge/35-project-cms)
 * [travis](https://travis-ci.com/michaelageorge/35-project-cms)
 * [back-end(Heroku)](https://javascript-401-api.herokuapp.com)
-* [front-end(AWS)](http://xyz.com)
+* [front-end(AWS)](http://cms-diquattroandgeorge.s3-website-us-west-2.amazonaws.com)
 
 
 ### Description
